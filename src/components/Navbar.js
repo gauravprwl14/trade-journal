@@ -7,9 +7,18 @@ import { Row, Col, Nav, Form, Image, Navbar, Dropdown, Container, ListGroup, Inp
 
 import NOTIFICATIONS_DATA from "../data/notifications";
 import Profile3 from "../assets/img/team/profile-picture-3.jpg";
-
+import { useHistory } from "react-router-dom";
+import { clearLocalStorageTokens } from '../utils/tokenHelper'
+import { Routes } from "../routes";
 
 export default (props) => {
+  const history = useHistory()
+  const handleLogout = () => {
+    clearLocalStorageTokens()
+    history.push(Routes.Landing.path)
+  }
+
+
   const [notifications, setNotifications] = useState(NOTIFICATIONS_DATA);
   const areNotificationsRead = notifications.reduce((acc, notif) => acc && notif.read, true);
 
@@ -108,7 +117,7 @@ export default (props) => {
 
                 <Dropdown.Divider />
 
-                <Dropdown.Item className="fw-bold">
+                <Dropdown.Item className="fw-bold" onClick={handleLogout}>
                   <FontAwesomeIcon icon={faSignOutAlt} className="text-danger me-2" /> Logout
                 </Dropdown.Item>
               </Dropdown.Menu>
