@@ -14,10 +14,11 @@
 // * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. Please contact us to request a removal.
 
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { HashRouter } from "react-router-dom";
-
+import ReactDOM from 'react-dom/client';
+import { BrowserRouter } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
 // core styles
+import 'react-toastify/dist/ReactToastify.css';
 import "./scss/volt.scss";
 
 // vendor styles
@@ -26,10 +27,14 @@ import "./scss/volt.scss";
 import HomePage from "./pages/HomePage";
 import ScrollToTop from "./components/ScrollToTop";
 
-ReactDOM.render(
-  <HashRouter>
+const root = ReactDOM.createRoot(
+  document.getElementById("root")
+)
+
+root.render(
+  <BrowserRouter>
     <ScrollToTop />
     <HomePage />
-  </HashRouter>,
-  document.getElementById("root")
-);
+    <ToastContainer />
+  </BrowserRouter>
+)
