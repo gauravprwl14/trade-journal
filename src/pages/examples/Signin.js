@@ -1,7 +1,8 @@
 
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
+import { Redirect } from 'react-router-dom';
+import { isPresentLocalStorageTokens } from '../../utils/tokenHelper';
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { Container, Col, Row, Button } from '@themesberg/react-bootstrap';
 import { useHistory } from 'react-router-dom';
@@ -24,6 +25,11 @@ import { setLocalStorageTokens } from '../../utils/tokenHelper'
 export default () => {
 
   let history = useHistory();
+
+
+  if (isPresentLocalStorageTokens()) {
+    return <Redirect to={Routes.Dashboard.path} />;
+  }
 
 
   const handleLogin = async () => {
