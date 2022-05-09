@@ -187,14 +187,48 @@ export const RankingTable = () => {
   );
 };
 
+
+const getColorVariant = (status) => {
+  if (status === 'open') {
+    return 'warning'
+  }
+
+  if (status === 'loss') {
+    return 'danger'
+  }
+
+
+  if (status === 'Profit') {
+    return 'success'
+  }
+
+  return 'primary'
+}
+
+const calPercentageChange = (entry, exit, size) => {
+  const quantity = parseInt(size)
+  console.log('%c quantity ', 'background: lime; color: black', quantity);
+
+
+  const costPrice = parseFloat(entry) * quantity
+  const sellPrice = parseFloat(exit) * quantity
+
+
+
+  return parseFloat(((sellPrice - costPrice) / costPrice) * 100).toFixed(2)
+}
+
 export const TransactionsTable = () => {
   const totalTransactions = transactions.length;
 
   const TableRow = (props) => {
-    const { invoiceNumber, subscription, price, issueDate, dueDate, status } = props;
-    const statusVariant = status === "Paid" ? "success"
-      : status === "Due" ? "warning"
-        : status === "Canceled" ? "danger" : "primary";
+    const { invoiceNumber, symbol, entry_price, exit_price, size, open_date, dueDate, status } = props;
+
+
+    const statusVariant = getColorVariant(status)
+    // const statusVariant = status === "open" ? "success"
+    //   : status === "Due" ? "warning"
+    //     : status === "Canceled" ? "danger" : "primary";
 
     return (
       <tr>
@@ -204,25 +238,46 @@ export const TransactionsTable = () => {
           </Card.Link>
         </td>
         <td>
-          <span className="fw-normal">
-            {subscription}
+          <span className={`fw-normal btn btn-${statusVariant}`}>
+            {status}
           </span>
         </td>
         <td>
           <span className="fw-normal">
-            {issueDate}
+            {open_date}
           </span>
         </td>
         <td>
           <span className="fw-normal">
-            {dueDate}
+            {symbol}
           </span>
         </td>
         <td>
+          <span className="fw-normal">
+            {entry_price}
+          </span>
+        </td>
+        <td>
+          <span className="fw-normal">
+            {exit_price}
+          </span>
+        </td>
+        <td>
+          <span className="fw-normal">
+            {size}
+          </span>
+        </td>
+
+        <td>
+          <span className={`fw-normal text-${statusVariant}`}>
+            {calPercentageChange(entry_price, exit_price, size) === 'NaN' ? 0 : calPercentageChange(entry_price, exit_price, size)}
+          </span>
+        </td>
+        {/* <td>
           <span className="fw-normal">
             ${parseFloat(price).toFixed(2)}
           </span>
-        </td>
+        </td> */}
         <td>
           <span className={`fw-normal text-${statusVariant}`}>
             {status}
@@ -259,11 +314,13 @@ export const TransactionsTable = () => {
           <thead>
             <tr>
               <th className="border-bottom">#</th>
-              <th className="border-bottom">Bill For</th>
-              <th className="border-bottom">Issue Date</th>
-              <th className="border-bottom">Due Date</th>
-              <th className="border-bottom">Total</th>
               <th className="border-bottom">Status</th>
+              <th className="border-bottom">Open Date</th>
+              <th className="border-bottom">Symbol</th>
+              <th className="border-bottom">Entry</th>
+              <th className="border-bottom">Exit</th>
+              <th className="border-bottom">Size</th>
+              <th className="border-bottom">Return %</th>
               <th className="border-bottom">Action</th>
             </tr>
           </thead>
