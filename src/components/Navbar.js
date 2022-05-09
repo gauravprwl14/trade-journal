@@ -11,6 +11,7 @@ import { useHistory } from "react-router-dom";
 import { clearLocalStorageTokens } from '../utils/tokenHelper'
 import { Routes } from "../routes";
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default (props) => {
   const history = useHistory()
   const handleLogout = () => {
@@ -105,7 +106,7 @@ export default (props) => {
                 <Dropdown.Item className="fw-bold">
                   <FontAwesomeIcon icon={faUserCircle} className="me-2" /> My Profile
                 </Dropdown.Item>
-                <Dropdown.Item className="fw-bold">
+                {/* <Dropdown.Item className="fw-bold">
                   <FontAwesomeIcon icon={faCog} className="me-2" /> Settings
                 </Dropdown.Item>
                 <Dropdown.Item className="fw-bold">
@@ -113,7 +114,7 @@ export default (props) => {
                 </Dropdown.Item>
                 <Dropdown.Item className="fw-bold">
                   <FontAwesomeIcon icon={faUserShield} className="me-2" /> Support
-                </Dropdown.Item>
+                </Dropdown.Item> */}
 
                 <Dropdown.Divider />
 

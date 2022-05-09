@@ -221,11 +221,11 @@ export const ProgressTrackWidget = () => {
 
     return (
       <Row className={`align-items-center ${extraClassName}`}>
-        <Col xs="auto">
+        {/* <Col xs="auto">
           <span className={`icon icon-md text-${color}`}>
             <FontAwesomeIcon icon={icon} className="me-1" />
           </span>
-        </Col>
+        </Col> */}
         <Col>
           <div className="progress-wrapper">
             <div className="progress-info">
@@ -248,11 +248,11 @@ export const ProgressTrackWidget = () => {
       </Card.Header>
       <Card.Body>
 
-        <Progress title="Rocket - SaaS Template" color="purple" icon={faBootstrap} percentage={34} />
-        <Progress title="Pixel - Design System" color="danger" icon={faAngular} percentage={60} />
-        <Progress title="Spaces - Listings Template" color="tertiary" icon={faVuejs} percentage={45} />
-        <Progress title="Stellar - Dashboard" color="info" icon={faReact} percentage={35} />
-        <Progress last title="Volt - Dashboard" color="purple" icon={faBootstrap} percentage={34} />
+        <Progress title="Total Closed Trade" color="purple" icon={faBootstrap} percentage={34} />
+        <Progress title="Total Trades" color="danger" icon={faAngular} percentage={60} />
+        <Progress title="Total Open Trades" color="tertiary" icon={faVuejs} percentage={45} />
+        <Progress title="Avg Num Trade" color="info" icon={faReact} percentage={35} />
+        <Progress last title="Profit Factor" color="purple" icon={faBootstrap} percentage={34} />
       </Card.Body>
     </Card>
   );
@@ -264,7 +264,7 @@ export const RankingWidget = () => {
       <Card.Body>
         <div className="d-flex align-items-center justify-content-between border-bottom border-light pb-3">
           <div>
-            <h6><FontAwesomeIcon icon={faGlobeEurope} className="icon icon-xs me-3" /> Global Rank</h6>
+            <h6><FontAwesomeIcon icon={faGlobeEurope} className="icon icon-xs me-3" /> Total Trade Size</h6>
           </div>
           <div>
             <Card.Link href="#" className="text-primary fw-bold">
@@ -274,27 +274,27 @@ export const RankingWidget = () => {
         </div>
         <div className="d-flex align-items-center justify-content-between border-bottom border-light py-3">
           <div>
-            <h6 className="mb-0"><FontAwesomeIcon icon={faFlagUsa} className="icon icon-xs me-3" />Country Rank</h6>
+            <h6 className="mb-0"><FontAwesomeIcon icon={faFlagUsa} className="icon icon-xs me-3" />Commission</h6>
             <div className="small card-stats">
-              United States <FontAwesomeIcon icon={faAngleUp} className="icon icon-xs text-success ms-2" />
+              Facebook <FontAwesomeIcon icon={faAngleUp} className="icon icon-xs text-success ms-2" />
             </div>
           </div>
           <div>
             <Card.Link href="#top" className="text-primary fw-bold">
-              #32 <FontAwesomeIcon icon={faChartLine} className="ms-2" />
+              32% <FontAwesomeIcon icon={faChartLine} className="ms-2" />
             </Card.Link>
           </div>
         </div>
         <div className="d-flex align-items-center justify-content-between pt-3">
           <div>
-            <h6 className="mb-0"><FontAwesomeIcon icon={faFolderOpen} className="icon icon-xs me-3" />Category Rank</h6>
+            <h6 className="mb-0"><FontAwesomeIcon icon={faFolderOpen} className="icon icon-xs me-3" />Average Fee</h6>
             <Card.Link href="#top" className="small card-stats">
-              Travel &gt; Accomodation
+              S&P 500
             </Card.Link>
           </div>
           <div>
             <Card.Link href="#top" className="text-primary fw-bold">
-              #16 <FontAwesomeIcon icon={faChartLine} className="ms-2" />
+              16% <FontAwesomeIcon icon={faChartLine} className="ms-2" />
             </Card.Link>
           </div>
         </div>
@@ -369,33 +369,33 @@ export const SalesValueWidgetPhone = (props) => {
   );
 };
 
-export const AcquisitionWidget = () => {
-  return (
-    <Card border="light" className="shadow-sm">
-      <Card.Body>
-        <h5>Acquisition</h5>
-        <p>Tells you where your visitors originated from, such as search engines, social networks or website referrals.</p>
-        <div className="d-block">
-          <div className="d-flex align-items-center pt-3 me-5">
-            <div className="icon icon-shape icon-sm icon-shape-danger rounded me-3">
-              <FontAwesomeIcon icon={faChartBar} />
-            </div>
-            <div className="d-block">
-              <label className="mb-0">Bounce Rate</label>
-              <h4 className="mb-0">33.50%</h4>
-            </div>
-          </div>
-          <div className="d-flex align-items-center pt-3">
-            <div className="icon icon-shape icon-sm icon-shape-quaternary rounded me-3">
-              <FontAwesomeIcon icon={faChartArea} />
-            </div>
-            <div className="d-block">
-              <label className="mb-0">Sessions</label>
-              <h4 className="mb-0">9,567</h4>
-            </div>
-          </div>
-        </div>
-      </Card.Body>
-    </Card>
-  );
-};
+// export const AcquisitionWidget = () => {
+//   return (
+//     <Card border="light" className="shadow-sm">
+//       <Card.Body>
+//         <h5>Acquisition</h5>
+//         <p>Tells you where your visitors originated from, such as search engines, social networks or website referrals.</p>
+//         <div className="d-block">
+//           <div className="d-flex align-items-center pt-3 me-5">
+//             <div className="icon icon-shape icon-sm icon-shape-danger rounded me-3">
+//               <FontAwesomeIcon icon={faChartBar} />
+//             </div>
+//             <div className="d-block">
+//               <label className="mb-0">Bounce Rate</label>
+//               <h4 className="mb-0">33.50%</h4>
+//             </div>
+//           </div>
+//           <div className="d-flex align-items-center pt-3">
+//             <div className="icon icon-shape icon-sm icon-shape-quaternary rounded me-3">
+//               <FontAwesomeIcon icon={faChartArea} />
+//             </div>
+//             <div className="d-block">
+//               <label className="mb-0">Sessions</label>
+//               <h4 className="mb-0">9,567</h4>
+//             </div>
+//           </div>
+//         </div>
+//       </Card.Body>
+//     </Card>
+//   );
+// };

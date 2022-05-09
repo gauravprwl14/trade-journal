@@ -48,7 +48,7 @@ export const PageVisitsTable = () => {
       <Card.Header>
         <Row className="align-items-center">
           <Col>
-            <h5>Page visits</h5>
+            <h5>Trades</h5>
           </Col>
           <Col className="text-end">
             <Button variant="secondary" size="sm">See all</Button>
@@ -58,10 +58,10 @@ export const PageVisitsTable = () => {
       <Table responsive className="align-items-center table-flush">
         <thead className="thead-light">
           <tr>
-            <th scope="col">Page name</th>
-            <th scope="col">Page Views</th>
-            <th scope="col">Page Value</th>
-            <th scope="col">Bounce rate</th>
+            <th scope="col">Symbol</th>
+            <th scope="col">Price</th>
+            <th scope="col">Value</th>
+            <th scope="col">Returns %</th>
           </tr>
         </thead>
         <tbody>

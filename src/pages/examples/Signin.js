@@ -13,6 +13,7 @@ import { Routes } from "../../routes";
 import BgImage from "../../assets/img/3D Illustration-Product Development-Skin-03.svg";
 
 import { auth, googleAuthProvider, firestore } from '../../firebase/index'
+import { useAppContext } from "../../context/appContext";
 
 import {
   GoogleAuthProvider,
@@ -25,6 +26,7 @@ import { setLocalStorageTokens } from '../../utils/tokenHelper'
 export default () => {
 
   let history = useHistory();
+  let { updateUser } = useAppContext()
 
 
   if (isPresentLocalStorageTokens()) {
@@ -39,8 +41,10 @@ export default () => {
       const newCredential = GoogleAuthProvider.credential(
         credential?.idToken
       )
-      const user = await signInWithCredential(auth, newCredential)
 
+
+      const user = await signInWithCredential(auth, newCredential)
+      console.log('%c newCredential ', 'background: lime; color: black', { newCredential, user });
 
       if (user) {
 
@@ -50,12 +54,18 @@ export default () => {
           .where("email", "==", user.user.email)
           .get();
 
+
+
+
         if (querySnapshot.empty) {
           setLocalStorageTokens({
             isUserLoggedIn: true,
             email: user.user.email,
             name: user.user.displayName,
+            id: user.user.uid,
           })
+
+          updateUser(user.user)
 
           await firestore.collection("users").add({
             email: user.user.email,
@@ -63,6 +73,7 @@ export default () => {
             number: "",
             whatsApp: "",
             company: "",
+            id: user.user.uid
           });
 
         } else {
@@ -79,7 +90,10 @@ export default () => {
             isUserLoggedIn: true,
             email: response[0]?.email,
             name: response[0]?.name,
+            id: response[0]?.id,
           })
+
+          updateUser(response[0])
 
 
         }

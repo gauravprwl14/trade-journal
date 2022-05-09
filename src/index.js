@@ -26,6 +26,7 @@ import "./scss/volt.scss";
 
 import HomePage from "./pages/HomePage";
 import ScrollToTop from "./components/ScrollToTop";
+import { AppProvider } from './context/appContext';
 
 const root = ReactDOM.createRoot(
   document.getElementById("root")
@@ -33,8 +34,10 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <BrowserRouter>
-    <ScrollToTop />
-    <HomePage />
-    <ToastContainer />
+    <AppProvider>
+      <ScrollToTop />
+      <HomePage />
+      <ToastContainer />
+    </AppProvider>
   </BrowserRouter>
 )

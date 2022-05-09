@@ -92,7 +92,7 @@ const RouteWithSidebar = ({ component: Component, ...rest }) => {
         <main className="content">
           <Navbar />
           <Component {...props} />
-          <Footer toggleSettings={toggleSettings} showSettings={showSettings} />
+          {/* <Footer toggleSettings={toggleSettings} showSettings={showSettings} /> */}
         </main>
       </>
     )}

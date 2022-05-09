@@ -8,7 +8,15 @@ import { CounterWidget, CircleChartWidget, BarChartWidget, TeamMembersWidget, Pr
 import { PageVisitsTable } from "../../components/Tables";
 import { trafficShares, totalOrders } from "../../data/charts";
 
+import { useAppContext } from '../../context/appContext'
+
+// eslint-disable-next-line import/no-anonymous-default-export
 export default () => {
+  const { getUser } = useAppContext()
+
+  console.log('%c user details ', 'background: lime; color: black', { userObj: getUser() });
+
+
   return (
     <>
       <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
@@ -54,7 +62,7 @@ export default () => {
         </Col>
         <Col xs={12} sm={6} xl={4} className="mb-4">
           <CounterWidget
-            category="Customers"
+            category="Accumulative Returns"
             title="345k"
             period="Feb 1 - Apr 1"
             percentage={18.2}
@@ -76,7 +84,7 @@ export default () => {
 
         <Col xs={12} sm={6} xl={4} className="mb-4">
           <CircleChartWidget
-            title="Traffic Share"
+            title="Top Trades"
             data={trafficShares} />
         </Col>
       </Row>
@@ -90,9 +98,9 @@ export default () => {
                   <PageVisitsTable />
                 </Col>
 
-                <Col xs={12} lg={6} className="mb-4">
+                {/* <Col xs={12} lg={6} className="mb-4">
                   <TeamMembersWidget />
-                </Col>
+                </Col> */}
 
                 <Col xs={12} lg={6} className="mb-4">
                   <ProgressTrackWidget />
@@ -104,7 +112,7 @@ export default () => {
               <Row>
                 <Col xs={12} className="mb-4">
                   <BarChartWidget
-                    title="Total orders"
+                    title="Total Trades"
                     value={452}
                     percentage={18.2}
                     data={totalOrders} />
@@ -114,9 +122,9 @@ export default () => {
                   <RankingWidget />
                 </Col>
 
-                <Col xs={12} className="px-0">
+                {/* <Col xs={12} className="px-0">
                   <AcquisitionWidget />
-                </Col>
+                </Col> */}
               </Row>
             </Col>
           </Row>

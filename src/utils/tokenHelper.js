@@ -6,7 +6,7 @@ import { isNilOrEmpty } from './helper';
 
 
 const MY_WEB_APP_TOKENS = 'my-web-app-tokens';
-const TOKENS = ['userName', 'accessToken', 'email', 'name'];
+const TOKENS = ['userName', 'accessToken', 'email', 'name', 'id'];
 
 
 
